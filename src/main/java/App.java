@@ -1,4 +1,4 @@
-package sn.j.ldapsearch;
+
 
 /**
  * Hello world!
