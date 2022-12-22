@@ -69,11 +69,13 @@ public class Params {
 					}
 				} else { // We are at the filter
 					filter = arg;
-					if ("" != filter) {
+					if (!"".equals(filter)) {
 						filter = filter.replace("objectCategorx", "objectCategory");
 					}
-					if (i < args.length - 1)
+					if (i < args.length - 1) {
 						attributes = Arrays.copyOfRange(args, i + 1, args.length);
+						attributes = replaceObjectCategorx(attributes);
+					}
 					break;
 				}
 			}
@@ -85,6 +87,19 @@ public class Params {
 		} catch (Exception e) {
 			throw new ConfigurationException("Error parsing arguments " + Arrays.toString(args), e);
 		}
+	}
+
+	private static String[] replaceObjectCategorx(String[] s) {
+		if (s == null || s.length == 0)
+			return s;
+		for (int i = 0; i < s.length; i++) {
+			String temp = s[i].trim();
+			if ("objectCategorx".equals(temp)) {
+				temp = "objectCategory";
+			}
+			s[i] = temp;
+		}
+		return s;
 	}
 
 	public static int toInt(String s) throws ConfigurationException {

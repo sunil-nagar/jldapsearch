@@ -68,6 +68,7 @@ public class LdapSearch {
 			String displayValue = getDisplayValue(attribute.getAll());
 			display(attribute.getID(), displayValue);
 		}
+		System.out.println("\n\n");
 	}
 
 	private void display(String key, String value) {
