@@ -1,7 +1,0 @@
-jldapsearch/App.class
-jldapsearch/Log.class
-jldapsearch/LdapSearch.class
-jldapsearch/Utils.class
-jldapsearch/Params.class
-jldapsearch/ConfigurationException.class
-jldapsearch/LdapContextPool.class
