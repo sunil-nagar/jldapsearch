@@ -16,10 +16,8 @@ import javax.naming.ldap.PagedResultsResponseControl;
 
 public class LdapSearch {
 
-	private static final Log log = new Log(LdapSearch.class);
-
 	public void search() throws Exception {
-		log.debug("process");
+		Log.verbose("process");
 		int pageSize = 1000;
 		int sizeLimit = Params.sizelimit;
 		byte[] cookie = null;

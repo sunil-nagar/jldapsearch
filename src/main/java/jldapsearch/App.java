@@ -2,7 +2,9 @@ package jldapsearch;
 
 public class App {
 	public static void main(String[] args) {
-		System.out.println("Hello World!");
+		System.out.println("");
+		System.out.println("jldapsearch");
+		System.out.println("---------------------------------------------------");
 		try {
 			Params.initialize(args);
 			LdapSearch ldapSearch = new LdapSearch();

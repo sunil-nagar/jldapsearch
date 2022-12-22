@@ -70,8 +70,9 @@ If one or more entries are found, each entry is written to standard output in LD
 ### Examples ###
 
 ```
-
-java -jar jldapsearch.jar -b OU=People,dc=example,dc=net -s sub -D CN=test,OU=Admins,DC=example,DC=net -w s3cr3t (&(objectCategory=person)(objectclass=organizationalPerson))
+// NOTE:  In my Citrix Windows instance I had to change objectCategory to objectCategorx,
+//        The code will replace this.  If anyone knows why, send help.
+java -jar jldapsearch.jar -b OU=People,dc=example,dc=net -s sub -D "CN=test,OU=Admins,DC=example,DC=net" -w s3cr3t "(&(objectCategorx=person)(objectclass=organizationalPerson))"
 
 
 

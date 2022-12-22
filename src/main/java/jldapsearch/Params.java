@@ -69,12 +69,16 @@ public class Params {
 					}
 				} else { // We are at the filter
 					filter = arg;
+					if ("" != filter) {
+						filter = filter.replace("objectCategorx", "objectCategory");
+					}
 					if (i < args.length - 1)
 						attributes = Arrays.copyOfRange(args, i + 1, args.length);
 					break;
 				}
 			}
-			System.out.println(_toString());
+			if (Params.verbose)
+				Log.verbose("initialize", _toString());
 			if (Params.filter == null) {
 				throw new ConfigurationException("Filter not found!");
 			}

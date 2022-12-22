@@ -11,14 +11,12 @@ import javax.naming.ldap.LdapContext;
 
 public class LdapContextPool {
 
-	private static final Log log = new Log(LdapContextPool.class);
-
 	private static List<LdapContext> contextPool = new ArrayList<LdapContext>();
 	private static final int poolSize = 5;
 	private static final Hashtable<String, String> env = new Hashtable<String, String>();
 
 	private void validate() throws ConfigurationException {
-		log.debug("validate");
+		Log.verbose("validate");
 		Utils.emptyConfigurationException("ldapuri", Params.ldapuri);
 		Utils.emptyConfigurationException("binddn", Params.binddn);
 		Utils.emptyConfigurationException("passwd", Params.passwd);
@@ -33,11 +31,11 @@ public class LdapContextPool {
 		env.put(Context.SECURITY_CREDENTIALS, Params.passwd.trim());
 		// Enable connection pooling
 		env.put("com.sun.jndi.ldap.connect.pool", "true");
-		log.debug("", env.get(Context.PROVIDER_URL), env.get(Context.SECURITY_PRINCIPAL));
+		Log.verbose("", env.get(Context.PROVIDER_URL), env.get(Context.SECURITY_PRINCIPAL));
 	}
 
 	public synchronized LdapContext openInitialContext() throws NamingException {
-		log.debug("openInitialContext");
+		Log.verbose("openInitialContext");
 		LdapContext dirContext = null;
 		// If a connection exists in the pool, use it
 		if (contextPool.size() > 0) {
@@ -54,7 +52,7 @@ public class LdapContextPool {
 	}
 
 	public synchronized void closeInitialContext(LdapContext initialCtx) throws NamingException {
-		log.debug("closeInitialContext");
+		Log.verbose("closeInitialContext");
 		if (contextPool.size() > poolSize)
 			initialCtx.close();
 		else
