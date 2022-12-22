@@ -78,7 +78,7 @@ public class Params {
 				}
 			}
 			if (Params.verbose)
-				Log.verbose("initialize", _toString());
+				Log.verbose("Initializing with parameters...", _toString());
 			if (Params.filter == null) {
 				throw new ConfigurationException("Filter not found!");
 			}

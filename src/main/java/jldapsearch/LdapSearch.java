@@ -17,19 +17,24 @@ import javax.naming.ldap.PagedResultsResponseControl;
 public class LdapSearch {
 
 	public void search() throws Exception {
-		Log.verbose("process");
 		int pageSize = 1000;
-		int sizeLimit = Params.sizelimit;
 		byte[] cookie = null;
 		int currentEntry = 0;
 		LdapContextPool lcp = new LdapContextPool();
 		LdapContext ctx = lcp.openInitialContext();
+
+		String searchBase = Params.searchbase;
+		String searchFilter = Params.filter;
+		int sizeLimit = Params.sizelimit;
+		String[] returningAttributes = Params.attributes;
+		if (returningAttributes.length == 0)
+			returningAttributes = null;
+		Log.verbose("Searching", "searchbase", searchBase, "searchfiter", searchFilter, "sizelimit", sizeLimit,
+				"returningAttributes", returningAttributes, "sizelimit", sizeLimit);
 		ctx.setRequestControls(new Control[] { new PagedResultsControl(pageSize, Control.CRITICAL) });
 		SearchControls searchCtls = new SearchControls();
 		searchCtls.setSearchScope(SearchControls.SUBTREE_SCOPE);
-		searchCtls.setReturningAttributes(Params.attributes);
-		String searchBase = Params.searchbase;
-		String searchFilter = Params.filter;
+		searchCtls.setReturningAttributes(returningAttributes);
 		do {
 			NamingEnumeration<SearchResult> results = ctx.search(searchBase, searchFilter, searchCtls);
 			while (results.hasMore() && currentEntry < sizeLimit) {

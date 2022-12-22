@@ -16,7 +16,6 @@ public class LdapContextPool {
 	private static final Hashtable<String, String> env = new Hashtable<String, String>();
 
 	private void validate() throws ConfigurationException {
-		Log.verbose("validate");
 		Utils.emptyConfigurationException("ldapuri", Params.ldapuri);
 		Utils.emptyConfigurationException("binddn", Params.binddn);
 		Utils.emptyConfigurationException("passwd", Params.passwd);
@@ -31,11 +30,10 @@ public class LdapContextPool {
 		env.put(Context.SECURITY_CREDENTIALS, Params.passwd.trim());
 		// Enable connection pooling
 		env.put("com.sun.jndi.ldap.connect.pool", "true");
-		Log.verbose("", env.get(Context.PROVIDER_URL), env.get(Context.SECURITY_PRINCIPAL));
 	}
 
 	public synchronized LdapContext openInitialContext() throws NamingException {
-		Log.verbose("openInitialContext");
+		Log.verbose("Connecting to", Params.ldapuri, "using bind DN", Params.binddn);
 		LdapContext dirContext = null;
 		// If a connection exists in the pool, use it
 		if (contextPool.size() > 0) {
