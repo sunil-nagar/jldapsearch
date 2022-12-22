@@ -53,7 +53,7 @@ public class LdapSearch {
 					}
 				}
 			} else {
-				System.out.println("No controls were sent from the server");
+				Log.verbose("No controls were sent from the server");
 			}
 			ctx.setRequestControls(new Control[] { new PagedResultsControl(pageSize, cookie, Control.CRITICAL) });
 		} while (cookie != null && currentEntry < sizeLimit);
@@ -68,7 +68,7 @@ public class LdapSearch {
 			String displayValue = getDisplayValue(attribute.getAll());
 			display(attribute.getID(), displayValue);
 		}
-		System.out.println("\n\n");
+		System.out.println("\n");
 	}
 
 	private void display(String key, String value) {
