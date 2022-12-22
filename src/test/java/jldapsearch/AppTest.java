@@ -1,4 +1,4 @@
-package sn.j.ldapsearch;
+package jldapsearch;
 
 import static org.junit.Assert.assertTrue;
 

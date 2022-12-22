@@ -6,7 +6,7 @@
 jldapsearch - Java LDAP Search Utility
 
 ### Synopsis ###
-ldapsearch [-b searchbase] [-s {base|one|sub|children}] [-a {never|always|search|find}] [-l timelimit] [-z sizelimit] [-D binddn] [-w passwd] [-H ldapuri] filter [attrs...]
+**ldapsearch** \[**-b** searchbase] \[**-s** {**base|one|sub|children**}] \[**-a** {**never|always|search|find**}] \[**-l** timelimit] \[**-z** sizelimit] \[**-D** binddn] \[**-w** passwd] \[**-H** ldapuri] *filter* [attrs...]
 
 
 ### Description ###
@@ -76,3 +76,8 @@ java -jar jldapsearch.jar -b OU=People,dc=example,dc=net -s sub -D CN=test,OU=Ad
 
 
 ```
+
+
+### Ignore These Notes
+
+https://stackoverflow.com/questions/39478482/how-to-create-development-branch-from-master-on-github
