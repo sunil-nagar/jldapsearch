@@ -74,6 +74,7 @@ public class Params {
 					break;
 				}
 			}
+			System.out.println(_toString());
 			if (Params.filter == null) {
 				throw new ConfigurationException("Filter not found!");
 			}
@@ -105,7 +106,7 @@ public class Params {
 		return "Params { \n" + _toString("verbose", "" + verbose) + _toString("searchbase", Params.searchbase)
 				+ _toString("scope", Params.scope) + _toString("alias", Params.alias)
 				+ _toString("timelimit", Params.timelimit) + _toString("sizelimit", "" + Params.sizelimit)
-				+ _toString("binddn", Params.binddn) + _toString("passwd", "" + Params.passwd)
+				+ _toString("binddn", Params.binddn) + _toString("passwd", Params.passwd)
 				+ _toString("ldapuri", Params.ldapuri) + _toString("filter", Params.filter)
 				+ _toString("attributes", Params.attributes) + "}";
 	}
